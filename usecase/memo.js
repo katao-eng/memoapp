@@ -1,4 +1,6 @@
+const service = require('../service')
+
 exports.getAll = () => {
-  // TODO: service層からデータを取得できるようにする
-  return []
+  const memos = service.memo.getAll()
+  return memos
 }
