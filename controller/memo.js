@@ -8,3 +8,17 @@ exports.getAll = async(req, res, next) => {
     return res.status(500).send({"error": String(e), "message": "error occured"})
   }
 }
+
+exports.create = async(req, res, next) => {
+  // メッセージの取得
+  const message = req.body.message ?? ""
+  // メモの完了状態の取得
+  const checked = req.body.checked ?? false
+
+  try {
+    await usecase.memo.create(message, checked)
+    return res.status(200).send({})
+  } catch (e) {
+    return res.status(500).send({"error": String(e), "message": "error occured"})
+  }
+}
