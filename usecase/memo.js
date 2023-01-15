@@ -8,3 +8,11 @@ exports.getAll = async() => {
     throw e
   }
 }
+
+exports.create = async(message, checked) => {
+  try {
+    await service.memo.create(message, checked)
+  } catch (e) {
+    throw e
+  }
+}
