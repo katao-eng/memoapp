@@ -24,3 +24,11 @@ exports.update = async(id, checked) => {
     throw e
   }
 }
+
+exports.delete = async(id) => {
+  try {
+    await service.memo.delete(id)
+  } catch (e) {
+    throw e
+  }
+}
