@@ -22,3 +22,14 @@ exports.create = async(req, res, next) => {
     return res.status(500).send({"error": String(e), "message": "error occured"})
   }
 }
+
+exports.update = async(req, res, next) => {
+  const id = req.params.id
+  const checked = req.body.checked
+  try {
+    await usecase.memo.update(id, checked)
+    return res.status(200).send({})
+  } catch (e) {
+    return res.status(500).send({"error": String(e), "message": "error occured"})
+  }
+}
