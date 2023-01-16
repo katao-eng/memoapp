@@ -42,3 +42,19 @@ exports.update = async(id, checked) => {
     throw e
   }
 }
+
+exports.delete = async(id) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new Error("invalid memo id")
+  }
+  try {
+    const memo = await model.memo.findOneAndDelete(
+      { _id: new mongoose.Types.ObjectId(id) }
+    )
+    if (memo == null) {
+      throw new Error("memo not found")
+    }
+  } catch (e) {
+    throw e
+  }
+}
