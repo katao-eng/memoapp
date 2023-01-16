@@ -33,3 +33,13 @@ exports.update = async(req, res, next) => {
     return res.status(500).send({"error": String(e), "message": "error occured"})
   }
 }
+
+exports.delete = async(req, res, next) => {
+  const id = req.query.id
+  try {
+    await usecase.memo.delete(id)
+    return res.status(200).send({})
+  } catch (e) {
+    return res.status(500).send({"error": String(e), "message": "error occured"})
+  }
+}
